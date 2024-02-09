@@ -1,0 +1,84 @@
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-7 align-self-center">
+            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1"><%= header %></h4>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 p-0">
+                        <li class="breadcrumb-item"><a href="<%= sub_header_url %>" class="text-muted"><%= sub_header %></a></li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page"><%= header %></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ucrc">UCRC</label>
+                                <input type="text" id="ucrc" name="ucrc" class="form-control" value="<%= data.length > 0 ? data[0].ucrc : ucrc %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" value="<%= data.length > 0 ? data[0].name : '' %>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="contact_person">Contact Person</label>
+                                <input type="text" id="contact_person" name="contact_person" class="form-control" value="<%= data.length > 0 ? data[0].contact_person : '' %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone_no">Phone No.</label>
+                                <input type="text" id="phone_no" name="phone_no" class="form-control" value="<%= data.length > 0 ? data[0].name : '' %>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email ID</label>
+                                <input type="email" id="email" name="email" class="form-control" value="<%= data.length > 0 ? data[0].email : '' %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="address" class="form-control" value="<%= data.length > 0 ? data[0].address : '' %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="no_of_mechine">No. of mechine</label>
+                                <input type="number" id="no_of_mechine" name="no_of_mechine" class="form-control" value="<%= data.length > 0 ? data[0].no_of_mechine : '' %>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="no_of_user">No. of user</label>
+                                <input type="number" id="no_of_user" name="no_of_user" class="form-control" value="<%= data.length > 0 ? data[0].no_of_user : '' %>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
