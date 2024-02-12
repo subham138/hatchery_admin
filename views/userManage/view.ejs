@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        <button type="button" class="btn btn-primary float-right mb-4" onclick="routeToNextPage('/company/edit', {id: 0}, true)">
+                        <button type="button" class="btn btn-primary float-right mb-4" onclick="routeToNextPage('/user/edit', {id: 0}, true)">
                             <i class="fa fa-plus mr-2"></i>Add
                         </button>
                     </div>
@@ -41,13 +41,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>UCRC</th>
-                                    <th>Name</th>
-                                    <th>AMC Start</th>
-                                    <th>AMC End</th>
-                                    <th>Total Mechine</th>
-                                    <th>Total User</th>
+                                    <th>Company Name</th>
+                                    <th>User Name</th>
+                                    <th>User ID</th>
                                     <th>Action</th>
+                                    <th>Manage</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,15 +54,17 @@
                                 data.forEach(dt => { %>
                                     <tr>
                                         <td><%= i %></td>
-                                        <td><%= dt.ucrc %></td>
-                                        <td><%= dt.name %></td>
-                                        <td><%= dt.amc_start != '' ? dateFormat(dt.amc_start, "dd/mm/yyyy") : '' %></td>
-                                        <td><%= dt.amc_end != '' ? dateFormat(dt.amc_end, "dd/mm/yyyy") : '' %></td>
-                                        <td><%= dt.no_of_mechine %></td>
-                                        <td><%= dt.no_of_user %></td>
+                                        <td><%= dt.comp_name %>(<%= dt.ucrc %>)</td>
+                                        <td><%= dt.user_name %></td>
+                                        <td><%= dt.phone_no %></td>
                                         <td>
-                                            <button type="button" class="btn btn-primary float-right mb-4" onclick="routeToNextPage('/company/edit', {id: '<%= dt.id %>'}, true)">
+                                            <button type="button" class="btn btn-primary float-right mb-4" onclick="routeToNextPage('/user/edit', {id: '<%= dt.id %>'}, true)">
                                                 <i class="fa fa-pencil-alt mr-2"></i>Edit
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-secondary float-right mb-4" onclick="routeToNextPage('/user/manage', {id: '<%= dt.id %>'}, true)">
+                                                <i class="fa fa-eye-alt mr-2"></i>View
                                             </button>
                                         </td>
                                     </tr>

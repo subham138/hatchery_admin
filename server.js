@@ -46,11 +46,13 @@ app.use((req, res, next) => {
 
 const { compRouter } = require("./routes/companyRouter");
 const { dashRouter } = require("./routes/dashboardRouter");
+const { userManageRouter } = require("./routes/userManageRouter");
 const { userRouter } = require("./routes/userRoute");
 
 app.use(userRouter)
 app.use(dashRouter)
-app.use(compRouter)
+app.use('/company', compRouter)
+app.use('/user', userManageRouter)
 
 app.get('/', async (req, res) => {
     // res.send('LALA')

@@ -51,12 +51,29 @@
 
                             <script src="/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
                             <script src="/dist/js/pages/datatable/datatable-basic.init.js"></script>
-                            <% } else { %>
-                                <div class="main-wrapper">
-                                    <%- body %>
-                                </div>
-                                <%- include('login_footer') %>
-                                    <% } %>
+
+                            <script>
+                                function routeToNextPage(url, params, encode = true){
+                                    var query_string = ''
+                                    if(Object.keys(params).length > 0){
+                                        for(let dt of Object.keys(params)){
+                                            if(query_string != ''){
+                                                query_string = query_string + `&${dt}=${encodeURIComponent(window.btoa(params[dt]))}`
+                                            }else{
+                                                query_string = query_string + `${dt}=${encodeURIComponent(window.btoa(params[dt]))}`
+                                            }
+                                        }
+                                    }
+                                    var route_url = `${url}?${query_string}`
+                                    window.location.href = route_url
+                                }
+                            </script>
+                        <% } else { %>
+                            <div class="main-wrapper">
+                                <%- body %>
+                            </div>
+                            <%- include('login_footer') %>
+                        <% } %>
                     </body>
 
 </html>

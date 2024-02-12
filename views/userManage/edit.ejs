@@ -30,26 +30,26 @@
             <% } %>
             <div class="card">
                 <div class="card-body">
-                    <form action="/company/save" method="post">
+                    <form action="/user/save" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="ucrc">UCRC</label>
-                                    <input type="text" id="ucrc" name="ucrc" class="form-control" value="<%= data.length > 0 ? data[0].ucrc : ucrc %>" <%= id > 0 ? 'readonly' : ''%>>
+                                    <label for="comp_id">Company List</label>
+                                    <select class="form-select" name="comp_id" id="comp_id">
+                                        <option value="" selected>Select Company</option>
+                                        <% comp_list.forEach(dt => {
+                                            var _selected = ''
+                                            if(data.length > 0)
+                                            if(data[0].comp_id == dt.id) _selected = 'selected' %>
+                                            <option value="<%= dt.id %>" <%= _selected %>><%= dt.name %></option>
+                                        <% }) %>
+                                    </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" class="form-control" value="<%= data.length > 0 ? data[0].name : '' %>">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="contact_person">Contact Person</label>
-                                    <input type="text" id="contact_person" name="contact_person" class="form-control" value="<%= data.length > 0 ? data[0].contact_person : '' %>">
+                                    <label for="user_name">Name</label>
+                                    <input type="text" id="user_name" name="user_name" class="form-control" value="<%= data.length > 0 ? data[0].user_name : '' %>">
                                 </div>
                             </div>
                         </div>
@@ -62,45 +62,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="email">Email ID</label>
-                                    <input type="email" id="email" name="email" class="form-control" value="<%= data.length > 0 ? data[0].email : '' %>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <textarea name="address" id="address" class="form-control" cols="30" rows="3"><%= data.length > 0 ? data[0].address : '' %></textarea>
-                                    <!-- <input type="text" id="address" name="address" class="form-control" value=""> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="no_of_mechine">No. of mechine</label>
-                                    <input type="number" id="no_of_mechine" name="no_of_mechine" class="form-control" value="<%= data.length > 0 ? data[0].no_of_mechine : '' %>">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="no_of_user">No. of user</label>
-                                    <input type="number" id="no_of_user" name="no_of_user" class="form-control" value="<%= data.length > 0 ? data[0].no_of_user : '' %>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="amc_start">AMC Start</label>
-                                    <input type="date" id="amc_start" name="amc_start" class="form-control" value="<%= data.length > 0 ? (data[0].amc_start != '' ? dateFormat(data[0].amc_start, 'yyyy-mm-dd') : '') : '' %>">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="amc_end">AMC End</label>
-                                    <input type="date" id="amc_end" name="amc_end" class="form-control" value="<%= data.length > 0 ? (data[0].amc_end != '' ? dateFormat(data[0].amc_end, 'yyyy-mm-dd') : '') : '' %>">
+                                    <label for="password">Password</label>
+                                    <select class="form-select" name="password" id="password" aria-label=".form-select-sm example">
+                                        <option value="Nopass@123" selected>Default (Nopass@123)</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

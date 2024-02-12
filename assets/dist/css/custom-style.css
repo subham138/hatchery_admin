@@ -1,3 +1,103 @@
-.page-wrapper>.container-fluid {
-    min-height: calc(100vh - 110px);
+.page-wrapper > .container-fluid {
+  min-height: calc(100vh - 110px);
+}
+
+.true-label,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.toggle-button {
+  position: relative;
+  width: 84px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.toggle-button.r,
+.toggle-button.r .layer {
+  border-radius: 100px;
+}
+
+.toggle-button.b2 {
+  border-radius: 2px;
+}
+
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.true-label {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  background-color: #ebf7fc;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+/* Button 10 */
+#tg-btn .true-label:before,
+#tg-btn .true-label:after,
+#tg-btn .true-label span {
+  position: absolute;
+  top: 4px;
+  width: 35px;
+  height: 27px;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  border-radius: 2px;
+  transition: 0.3s ease all;
+}
+
+#tg-btn .true-label:before {
+  content: "";
+  left: 4px;
+  background-color: #03a9f4;
+}
+
+#tg-btn .true-label:after {
+  content: "NO";
+  right: 4px;
+  color: #4e4e4e;
+}
+
+#tg-btn .true-label span {
+  display: inline-block;
+  left: 4px;
+  color: #fff;
+  z-index: 1;
+}
+
+#tg-btn .checkbox:checked + .true-label span {
+  color: #4e4e4e;
+}
+
+#tg-btn .checkbox:checked + .true-label:before {
+  left: 42px;
+  background-color: #f44336;
+}
+
+#tg-btn .checkbox:checked + .true-label:after {
+  color: #fff;
+}
+
+#tg-btn .checkbox:checked ~ .layer {
+  background-color: #fcebeb;
 }

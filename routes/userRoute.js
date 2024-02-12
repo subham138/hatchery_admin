@@ -38,4 +38,9 @@ userRouter.post('/login', async (req, res) => {
     }
 })
 
+userRouter.get("/log_out", (req, res) => {
+  req.session.destroy();
+  res.redirect("/login");
+});
+
 module.exports = { userRouter }
