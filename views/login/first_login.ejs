@@ -19,27 +19,30 @@
                 <div class="text-center">
                     <img src="/images/chicken1.png" width="35%" height="100%" alt="wrapkit">
                 </div>
-                <h2 class="mt-3 text-center">Sign In</h2>
-                <p class="text-center">Enter your email address and password to access the panel.</p>
-                <form class="mt-4" method="post" action="/login">
+                <h2 class="mt-3 text-center">First Login!!!</h2>
+                <p class="text-center">Change you password before you start your journey.</p>
+                <form class="mt-4" method="post" action="/reset_pass">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="text-dark" for="user_id">UserId</label>
-                                <input class="form-control" id="user_id" name="user_id" type="text" value="admin" placeholder="enter your userId">
+                                <label class="text-dark" for="old_pass">Old Password</label>
+                                <input class="form-control" id="old_pass" name="old_pass" type="password" placeholder="enter your password">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label class="text-dark" for="password">Password</label>
-                                <input class="form-control" id="password" name="password" type="password" value="123" placeholder="enter your password">
+                                <input class="form-control" id="password" name="password" type="password" placeholder="enter your password">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="text-dark" for="re_pass">Re Enter Password</label>
+                                <input class="form-control" id="re_pass" name="re_pass" type="password" placeholder="enter your password">
                             </div>
                         </div>
                         <div class="col-lg-12 text-center">
-                            <button type="submit" class="btn btn-block btn-dark">Sign In</button>
-                        </div>
-                        <div class="col-lg-12 text-center mt-5">
-                            Don't have an account? <a href="#" class="text-danger">Sign Up</a>
+                            <button type="submit" class="btn btn-block btn-dark">Submit</button>
                         </div>
                     </div>
                 </form>

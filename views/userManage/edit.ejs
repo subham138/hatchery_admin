@@ -35,7 +35,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="comp_id">Company List</label>
-                                    <select class="form-select" name="comp_id" id="comp_id">
+                                    <select class="form-control" name="comp_id" id="comp_id">
                                         <option value="" selected>Select Company</option>
                                         <% comp_list.forEach(dt => {
                                             var _selected = ''
@@ -63,7 +63,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <select class="form-select" name="password" id="password" aria-label=".form-select-sm example">
+                                    <select class="form-control" name="password" id="password" aria-label=".form-select-sm example">
                                         <option value="Nopass@123" selected>Default (Nopass@123)</option>
                                     </select>
                                 </div>
@@ -97,3 +97,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#comp_id').on('change', function(){
+        $.ajax({
+            method:'GET',
+            url: '/company/dtls_ajax',
+            data: {id: $(this).val()},
+            dataType: 'html',
+            beforeSend: function(){
+                $('.preloader').show()
+            },
+            success: function(result){
+                var res = JSON.parse(result);
+                // console.log(res);
+                if(res.suc > 0){
+                    $('#user_name').val(res.msg[0].contact_person)
+                    $('#phone_no').val(res.msg[0].phone_no)
+                }
+            },
+            complete: function(){
+                $('.preloader').hide()
+            }
+        })
+    })
+</script>

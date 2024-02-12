@@ -22,7 +22,7 @@ module.exports = {
           resolve(res_dt);
         });
     },
-    saveCompUser: (data, user_name) => {
+    saveCompUser: (data, user_name, user_type) => {
         return new Promise(async (resolve, reject) => {
             var pass = bcrypt.hashSync(data.password, 10),
               datetime = dateFormat(new Date(), "yyyy-mm-dd HH:MM:ss");
@@ -30,7 +30,7 @@ module.exports = {
             fields = data.id > 0 ? `user_name = '${data.user_name}', phone = '${data.phone_no}', 
             user_id = '${data.phone_no}', active_flag = '${data.active_flag ? data.active_flag : "Y"}', modified_by = '${user_name}', modified_dt = '${datetime}'` : 
             `(comp_id, user_type, user_name, phone, user_id, password, created_by, created_dt)`,
-            values = `('${data.comp_id}', '${data.user_type}', '${data.user_name}', '${data.phone_no}', 
+            values = `('${data.comp_id}', '${user_type}', '${data.user_name}', '${data.phone_no}', 
             '${data.phone_no}', '${pass}', '${user_name}', '${datetime}')`,
             whr = data.id > 0 ? `id = ${data.id}` : null,
             flag = data.id > 0 ? 1 : 0;

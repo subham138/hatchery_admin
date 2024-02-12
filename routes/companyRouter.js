@@ -60,4 +60,10 @@ compRouter.post("/save", async (req, res) => {
   // res.send(res_dt);
 });
 
+compRouter.get('/dtls_ajax', async (req, res) => {
+  var data = req.query
+  var res_dt = await getCompanyDtls(data.id)
+  res.send(res_dt)
+})
+
 module.exports = { compRouter };

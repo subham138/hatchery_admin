@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<% if(path !='/login' ){ %>
+<% if(path !='/login' && path !='/first_login'){ %>
     <%- include('header.ejs') %>
         <% }else{ %>
             <%- include('login_header.ejs') %>
@@ -16,7 +16,7 @@
                                 <div class="lds-pos"></div>
                             </div>
                         </div>
-                        <% if(path !='/login' ){ %>
+                        <% if(path !='/login' && path !='/first_login'){ %>
                             <!-- ============================================================== -->
                             <!-- Main wrapper - style you can find in pages.scss -->
                             <!-- ============================================================== -->

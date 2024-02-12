@@ -50,8 +50,9 @@ userManageRouter.get('/edit', async (req, res) => {
 
 userManageRouter.post("/save", async (req, res) => {
   var data = req.body,
-  user_name = req.session.user.user_name;
-  var res_dt = await saveCompUser(data, user_name);
+  user_name = req.session.user.user_name,
+  user_type = req.session.user.user_type;
+  var res_dt = await saveCompUser(data, user_name, user_type == 'S' ? 'A' : 'U');
   if (res_dt.suc > 0) {
     req.session.message = {
       type: "success",
