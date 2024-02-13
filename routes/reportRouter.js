@@ -1,4 +1,4 @@
-const { allCollectionList } = require('../module/ReportModule');
+const { allCollectionList, getBirdWeight, getLameBirdWeight } = require('../module/ReportModule');
 
 const express = require('express'),
     repoRouter = express.Router(),
@@ -36,8 +36,19 @@ repoRouter.all('/', async (req, res) => {
     res.render('report/collection', view_dt)
 })
 
-repoRouter.get('/coll_full_repo', async (req, res) => {
+repoRouter.get('/view_out', async (req, res) => {
     var dc_no = Buffer.from(decodeURIComponent(req.query.id), "base64").toString()
+    var col_list = await allCollectionList(0, 0, 0, dc_no),
+    birdWeight = await getBirdWeight(dc_no),
+    lameBirdWeight = await getLameBirdWeight(dc_no);
+
+    var view_dt = {
+        header: "Report",
+        sub_header: "Collection Report",
+        sub_header_url: "/report"
+    }
+    
+    res.render('report/col_repo_full', view_dt)
 })
 
 module.exports = {repoRouter}
