@@ -32,123 +32,148 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
+                            <div id="divToPrint">
+                                <center>
+                                    <table class="center-text">
+                                        <tr>
+                                            <td colspan="3"><%= comp_dtls.length > 0 ? comp_dtls[0].name + ' (' + comp_dtls[0].ucrc + ')' : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><%= comp_dtls.length > 0 ? comp_dtls[0].address : '' %></td>
+                                        </tr>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <tr>
+                                            <td class="left-text">DC No.</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].dc_no : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Trader</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].trader_id : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Farmer</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].farmer_id : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Site</td>
+                                            <td class="left-text">:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].site_id : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Supervisor</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].super_id : '' %></td>
+                                        </tr>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <tr>
+                                            <td class="left-text">Schedule No.</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].schedule_no : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Date</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? dateFormat(col_list[0].entry_date, 'dd-mm-yyyy') : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Scale No</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].scale_no : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Vehicle No</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].vehicle_no : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Driver</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].driver_id : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Slip No</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].slip_no : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Lot No</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? col_list[0].lot_no : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">Start</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? dateFormat(col_list[0].str_dt, 'dd-mm-yyyy (hh:mm)') : '' %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="left-text">End</td>
+                                            <td>:</td>
+                                            <td class="left-text"><%= col_list.length > 0 ? dateFormat(col_list[0].end_dt, 'dd-mm-yyyy (hh:mm)') : '' %></td>
+                                        </tr>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <tr>
+                                            <td>No.</td>
+                                            <td>NOB</td>
+                                            <td>Weight</td>
+                                        </tr>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <% var tot_qty = 0, tot_weight = 0;
+                                        if(birdWeight.length > 0){
+                                            birdWeight.forEach(dt => {
+                                                tot_qty += dt.nob
+                                                tot_weight += dt.weight %>
+                                                <tr>
+                                                    <td><%= dt.sl_no %></td>
+                                                    <td><%= dt.nob %></td>
+                                                    <td><%= dt.weight %></td>
+                                                </tr>
+                                        <% })
+                                        } %>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <% var tot_lame_qty = 0, tot_lame_weight = 0;
+                                        if(lameBirdWeight.length > 0){
+                                            lameBirdWeight.forEach(dt => {
+                                                tot_lame_qty += dt.nob
+                                                tot_lame_weight += dt.weight %>
+                                                <tr>
+                                                    <td><%= dt.sl_no %></td>
+                                                    <td><%= dt.nob %></td>
+                                                    <td><%= dt.weight %></td>
+                                                </tr>
+                                            <% }) %>
+                                            <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <% } %>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td><%= tot_qty %></td>
+                                            <td><%= tot_weight %></td>
+                                        </tr>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <tr>
+                                            <td>Net wt.</td>
+                                            <td><%= tot_qty - tot_lame_qty %></td>
+                                            <td><%= tot_weight - tot_lame_weight %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Avg. wt.</td>
+                                            <td><%= tot_qty - tot_lame_qty %></td>
+                                            <td><%= ((tot_weight - tot_lame_weight)/(tot_qty - tot_lame_qty)).toFixed(2) %></td>
+                                        </tr>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                        <tr>
+                                            <td>Remark</td>
+                                            <td>:</td>
+                                            <td><%= col_list.length > 0 ? col_list[0].remarks : '' %></td>
+                                        </tr>
+                                        <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
+                                    </table>
+                                </center>
+                            </div>
                             <center>
-                                <table class="center-text">
-                                    <tr>
-                                        <td colspan="3">SOUTH BENGAL 2</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">PREMIUM CHICK FEEDS PVT. LTD.</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                    <tr>
-                                        <td class="left-text">DC No.</td>
-                                        <td>:</td>
-                                        <td class="left-text">15087</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Trader</td>
-                                        <td>:</td>
-                                        <td class="left-text">DIGANTA BERA-MANIKPARA</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Farmer</td>
-                                        <td>:</td>
-                                        <td class="left-text">ANIL MANNA</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Site</td>
-                                        <td class="left-text">:</td>
-                                        <td class="left-text">LODHASULI</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Supervisor</td>
-                                        <td>:</td>
-                                        <td class="left-text">BILASH HAZARE</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                    <tr>
-                                        <td class="left-text">Schedule No.</td>
-                                        <td>:</td>
-                                        <td class="left-text">15087</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Date</td>
-                                        <td>:</td>
-                                        <td class="left-text">05-09-23</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Scale No</td>
-                                        <td>:</td>
-                                        <td class="left-text">HS-221318</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Vehicle No</td>
-                                        <td>:</td>
-                                        <td class="left-text">WB494559</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Driver</td>
-                                        <td>:</td>
-                                        <td class="left-text">DIGANTA9734440326</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Slip No</td>
-                                        <td>:</td>
-                                        <td class="left-text">WB138756</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Lot No</td>
-                                        <td>:</td>
-                                        <td class="left-text">42</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">Start</td>
-                                        <td>:</td>
-                                        <td class="left-text">06-09-23  (05:49)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left-text">End</td>
-                                        <td>:</td>
-                                        <td class="left-text">06-09-23  (06:23)</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                    <tr>
-                                        <td>No.</td>
-                                        <td>NOB</td>
-                                        <td>Weight</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>10</td>
-                                        <td>21.15</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                    <tr>
-                                        <td>Total</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                    <tr>
-                                        <td>Net wt.</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Avg. wt.</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                    <tr>
-                                        <td>Remark</td>
-                                        <td>:</td>
-                                        <td>dasdasdasd</td>
-                                    </tr>
-                                    <tr><td colspan="3"><p class="text-color" style="border-style: dashed; border-width: 1px;width: 100%;"></p></td></tr>
-                                </table>
+                                <button type="button" class="btn btn-primary" onclick="print()">Print</button>
                             </center>
                         </div>
                     </div>
@@ -157,3 +182,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    function print(){
+        var divToPrint = document.getElementById('divToPrint');
+
+            var WindowObject = window.open('', 'Print-Window');
+            WindowObject.document.open();
+            WindowObject.document.writeln('<!DOCTYPE html>');
+            WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
+
+
+            WindowObject.document.writeln('@media print { .center-text{' +
+                'text-align: center;'+
+                '}'+
+                '.left-text{'+
+                '    text-align: left;'+
+                '}'+
+                '.right-text{'+
+                '    text-align: right;'+
+                '} } </style>');
+            WindowObject.document.writeln('</head><body onload="window.print()">');
+            WindowObject.document.writeln(divToPrint.innerHTML);
+            WindowObject.document.writeln('</body></html>');
+            WindowObject.document.close();
+            setTimeout(function () {
+                WindowObject.close();
+            }, 10);
+    }
+</script>

@@ -1,0 +1,254 @@
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-7 align-self-center">
+            <h4 class="page-title text-truncate text-dark font-weight-medium mb-1"><%= header %></h4>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 p-0">
+                        <li class="breadcrumb-item"><a href="<%= sub_header_url %>" class="text-muted"><%= sub_header %></a></li>
+                        <li class="breadcrumb-item text-muted active" aria-current="page"><%= header %></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <% if(message){ %>
+                <div class="col-md-12">
+                    <div class="alert alert-<%= message.type %> alert-dismissible bg-<%= message.type %> text-white border-0 fade show"
+                        role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <%= message.message %>
+                    </div>
+                </div>
+            <% } %>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/collection/save" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="dc_no">DC No.</label>
+                                    <input type="text" id="dc_no" name="dc_no" class="form-control" value="<%= data.length > 0 ? data[0].dc_no : ucrc %>" <%= id > 0 ? 'readonly' : ''%>>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="trader_name">Trader</label>
+                                    <input type="text" id="trader_name" name="trader_name" class="form-control" value="<%= data.length > 0 ? data[0].trader_id : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="farmer_name">Farmer</label>
+                                    <input type="text" id="farmer_name" name="farmer_name" class="form-control" value="<%= data.length > 0 ? data[0].farmer_id : '' %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="site">Site</label>
+                                    <input type="text" id="site" name="site" class="form-control" value="<%= data.length > 0 ? data[0].site : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sup_name">Supervisor</label>
+                                    <input type="text" id="sup_name" name="sup_name" class="form-control" value="<%= data.length > 0 ? data[0].sup_id : '' %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="schedule_no">Schedule No</label>
+                                    <input type="text" id="schedule_no" name="schedule_no" class="form-control" value="<%= data.length > 0 ? data[0].schedule_no : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="entry_date">Entry date</label>
+                                    <input type="text" id="entry_date" name="entry_date" class="form-control" value="<%= data.length > 0 ? dateFormat(data[0].entry_date 'dd-mm-yyyy') : '' %>" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="scale_no">Scale No</label>
+                                    <input type="text" id="scale_no" name="scale_no" class="form-control" value="<%= data.length > 0 ? data[0].scale_no : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="vehicle_no">Vehicle No</label>
+                                    <input type="text" id="vehicle_no" name="vehicle_no" class="form-control" value="<%= data.length > 0 ? data[0].vehicle_no : '' %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="driver">Driver</label>
+                                    <input type="text" id="driver" name="driver" class="form-control" value="<%= data.length > 0 ? data[0].driver_id : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="slip_no">Slip No.</label>
+                                    <input type="text" id="slip_no" name="slip_no" class="form-control" value="<%= data.length > 0 ? data[0].slip_no : '' %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lot_no">Lot No</label>
+                                    <input type="text" id="lot_no" name="lot_no" class="form-control" value="<%= data.length > 0 ? data[0].lot_no : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="start_date">Start date</label>
+                                    <input type="text" id="start_date" name="start_date" class="form-control" value="<%= data.length > 0 ? dateFormat(data[0].start_date, 'dd-mm-yyyy (hh:mm)') : '' %>" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="end_date">End date</label>
+                                    <input type="text" id="end_date" name="end_date" class="form-control" value="<%= data.length > 0 ? dateFormat(data[0].end_date, 'dd-mm-yyyy (hh:mm)') : '' %>" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Bird Weight</span>
+                                <table class="table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>NOB</th>
+                                            <th>Weight</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% var tot_qty = 0, tot_weight = 0;
+                                        if(birdWeight.length > 0){
+                                            birdWeight.forEach(dt => {
+                                                tot_qty += dt.nob
+                                                tot_weight += dt.weight %>
+                                                <tr>
+                                                    <td><%= dt.sl_no %></td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" id="nob_<%= dt.sl_no %>" name="nob" class="form-control" value="<%= dt.nob %>">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" id="weight_<%= dt.sl_no %>" name="weight" class="form-control" value="<%= dt.weight %>">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                        <% })
+                                        } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Lame Bird Weight</span>
+                                <table class="table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>NOB</th>
+                                            <th>Weight</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% var tot_lame_qty = 0, tot_lame_weight = 0;
+                                        if(lameBirdWeight.length > 0){
+                                            lameBirdWeight.forEach(dt => {
+                                                tot_lame_qty += dt.nob
+                                                tot_lame_weight += dt.weight %>
+                                                <tr>
+                                                    <td><%= dt.sl_no %></td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" id="lame_nob_<%= dt.sl_no %>" name="lame_nob" class="form-control" value="<%= dt.nob %>">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" id="lame_weight_<%= dt.sl_no %>" name="lame_weight" class="form-control" value="<%= dt.weight %>">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                        <% })
+                                        } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="remarks">Remarks</label>
+                                    <textarea name="remarks" id="remarks" class="form-control" cols="30" rows="3"><%= data.length > 0 ? data[0].remarks : '' %></textarea>
+                                    <!-- <input type="text" id="address" name="address" class="form-control" value=""> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="no_of_mechine">No. of mechine</label>
+                                    <input type="number" id="no_of_mechine" name="no_of_mechine" class="form-control" value="<%= data.length > 0 ? data[0].no_of_mechine : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="no_of_user">No. of user</label>
+                                    <input type="number" id="no_of_user" name="no_of_user" class="form-control" value="<%= data.length > 0 ? data[0].no_of_user : '' %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="amc_start">AMC Start</label>
+                                    <input type="date" id="amc_start" name="amc_start" class="form-control" value="<%= data.length > 0 ? (data[0].amc_start != '' ? dateFormat(data[0].amc_start, 'yyyy-mm-dd') : '') : '' %>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="amc_end">AMC End</label>
+                                    <input type="date" id="amc_end" name="amc_end" class="form-control" value="<%= data.length > 0 ? (data[0].amc_end != '' ? dateFormat(data[0].amc_end, 'yyyy-mm-dd') : '') : '' %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <input type="hidden" name="id" value="<%= id %>">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-success float-center"><i class="fa fa-save mr-2"></i>Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

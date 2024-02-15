@@ -6,7 +6,7 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             var select = 'dc_no, trader_id, farmer_id, site_id, super_id, schedule_no, entry_date, scale_no, vehicle_no, driver_id, slip_no, lot_no, str_dt, end_dt, net_qty, net_weight, avg_weight, remarks', 
             table_name = 'td_collection',
-            whr = `comp_id = '${comp_id}' AND entry_date BETWEEN '${frm_dt}' AND '${to_dt}' ${dc_no > 0 ? `AND dc_no = '${dc_no}'` : ''}`,
+            whr = dc_no > 0 ? `dc_no = '${dc_no}'` : `comp_id = '${comp_id}' AND entry_date BETWEEN '${frm_dt}' AND '${to_dt}'`,
             order = null;
             var res_dt = await db_Select(select, table_name, whr, order)
             resolve(res_dt)
