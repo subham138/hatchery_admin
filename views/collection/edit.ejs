@@ -149,15 +149,18 @@
                                                 tot_qty += dt.nob
                                                 tot_weight += dt.weight %>
                                                 <tr>
-                                                    <td><%= dt.sl_no %></td>
+                                                    <td>
+                                                        <%= dt.sl_no %>
+                                                        <input type="hidden" name="bird" value="<%= dt.sl_no %>">
+                                                    </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input type="text" id="nob_<%= dt.sl_no %>" name="nob" class="form-control" value="<%= dt.nob %>">
+                                                            <input type="text" id="nob_<%= dt.sl_no %>" name="nob_<%= dt.sl_no %>" class="form-control" value="<%= dt.nob %>">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input type="text" id="weight_<%= dt.sl_no %>" name="weight" class="form-control" value="<%= dt.weight %>">
+                                                            <input type="text" id="weight_<%= dt.sl_no %>" name="weight_<%= dt.sl_no %>" class="form-control" value="<%= dt.weight %>">
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -190,15 +193,18 @@
                                                 tot_lame_qty += dt.nob
                                                 tot_lame_weight += dt.weight %>
                                                 <tr>
-                                                    <td><%= dt.sl_no %></td>
+                                                    <td>
+                                                        <%= dt.sl_no %>
+                                                        <input type="hidden" name="lame_bird" value="<%= dt.sl_no %>">
+                                                    </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input type="text" id="lame_nob_<%= dt.sl_no %>" name="lame_nob" class="form-control" value="<%= dt.nob %>">
+                                                            <input type="text" id="lame_nob_<%= dt.sl_no %>" name="lame_nob_<%= dt.sl_no %>" class="form-control" value="<%= dt.nob %>">
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input type="text" id="lame_weight_<%= dt.sl_no %>" name="lame_weight" class="form-control" value="<%= dt.weight %>">
+                                                            <input type="text" id="lame_weight_<%= dt.sl_no %>" name="lame_weight_<%= dt.sl_no %>" class="form-control" value="<%= dt.weight %>">
                                                         </div>
                                                     </td>
                                                 </tr>

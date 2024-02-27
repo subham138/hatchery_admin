@@ -4,6 +4,7 @@ const {
   getBirdWeight,
   getLameBirdWeight,
 } = require("../module/ReportModule");
+const { updateCollection } = require("../module/collectionModule");
 
 const express = require("express"),
   collectionRouter = express.Router(),
@@ -72,5 +73,30 @@ collectionRouter.get("/edit", async (req, res) => {
 
   res.render("collection/edit", view_dt);
 });
+
+collectionRouter.post('/save', async(req, res) => {
+  var data = req.body
+  console.log(data);
+  var user_name = req.session.user.user_name
+  var res_dt = await updateCollection(data, user_name)
+  if (res_dt.suc > 0) {
+    req.session.message = {
+      type: "success",
+      message:
+        "Password updated successfully.. Please try to login with your new password.",
+    };
+    res.redirect(
+      "/collection");
+  } else {
+    req.session.message = {
+      type: "danger",
+      message: res_dt.msg,
+    };
+    res.redirect(
+      "/collection/edit?id=" +
+        encodeURIComponent(Buffer.from(data.dc_no).toString("base64"))
+    );
+  }
+})
 
 module.exports = { collectionRouter };
