@@ -3,7 +3,7 @@ const express = require("express"),
     expressLayouts = require("express-ejs-layouts"),
     session = require('express-session'),
     path = require("path"),
-    port = process.env.PORT || 3000;
+    port = process.env.PORT || 3006;
 
 app.use(express.json());
 
