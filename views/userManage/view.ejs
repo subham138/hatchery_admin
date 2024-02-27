@@ -45,7 +45,7 @@
                                     <th>User Name</th>
                                     <th>User ID</th>
                                     <th>Action</th>
-                                    <th>Manage</th>
+                                    <!-- <th>Manage</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,17 +56,17 @@
                                         <td><%= i %></td>
                                         <td><%= dt.comp_name %>(<%= dt.ucrc %>)</td>
                                         <td><%= dt.user_name %></td>
-                                        <td><%= dt.phone_no %></td>
+                                        <td><%= dt.phone %></td>
                                         <td>
-                                            <button type="button" class="btn btn-primary float-right mb-4" onclick="routeToNextPage('/user/edit', {id: '<%= dt.id %>'}, true)">
+                                            <button type="button" class="btn btn-primary mb-4" onclick="routeToNextPage('/user/edit', {id: '<%= dt.id %>'}, true)">
                                                 <i class="fa fa-pencil-alt mr-2"></i>Edit
                                             </button>
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <button type="button" class="btn btn-secondary float-right mb-4" onclick="routeToNextPage('/user/manage', {id: '<%= dt.id %>'}, true)">
                                                 <i class="fa fa-eye-alt mr-2"></i>View
                                             </button>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 <% i++;
                             })}else{ %>

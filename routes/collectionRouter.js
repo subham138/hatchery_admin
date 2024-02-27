@@ -34,7 +34,7 @@ collectionRouter.all('/', async (req, res) => {
       selected,
       dateFormat,
     };
-
+    console.log(col_list);
     res.render("collection/view", view_dt);
 })
 
@@ -45,7 +45,8 @@ collectionRouter.get('/edit', async (req, res) => {
     birdWeight = await getBirdWeight(dc_no),
     lameBirdWeight = await getLameBirdWeight(dc_no),
     comp_dtls = await getCompanyDtls(comp_id);
-
+    id = Buffer.from(decodeURIComponent(req.query.id), "base64").toString();
+    
     var view_dt = {
       header: "Edit Collection",
       sub_header: "Collection List",
@@ -55,9 +56,10 @@ collectionRouter.get('/edit', async (req, res) => {
       lameBirdWeight: lameBirdWeight.suc > 0 ? lameBirdWeight.msg : [],
       comp_dtls: comp_dtls.suc > 0 ? comp_dtls.msg : [],
       dateFormat,
+      id,
     };
     
-    res.render('collection/edit', view_dt)
+    res.render("collection/edit", view_dt)
 })
 
 module.exports = { collectionRouter };
