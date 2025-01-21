@@ -38,6 +38,9 @@ collectionRouter.all("/", async (req, res) => {
     );
   }
 
+  console.log(col_list);
+  
+
   var view_dt = {
     header: "Collection List",
     col_list: method == "POST" ? (col_list.suc > 0 ? col_list.msg : []) : [],

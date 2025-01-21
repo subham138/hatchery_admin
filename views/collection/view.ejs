@@ -76,8 +76,8 @@
                                                 <td><%= i %></td>
                                                 <td><%= dt.dc_no %></td>
                                                 <td><%= dateFormat(dt.entry_date, 'dd-mm-yyyy') %></td>
-                                                <td><%= dt.net_qty %></td>
-                                                <td><%= dt.net_weight %></td>
+                                                <td><%= dt.net_qty - dt.tot_lm_net %></td>
+                                                <td><%= dt.net_weight - dt.tot_lm_weg %></td>
                                                 <td>
                                                     <button type="button" class="btn btn-secondary mb-4" onclick="routeToNextPage('/collection/edit',{id: '<%= dt.dc_no %>'}, true)">
                                                         <i class="fa fa-pencil-alt mr-2"></i>Edit
